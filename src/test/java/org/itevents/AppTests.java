@@ -34,6 +34,6 @@ public class AppTests {
     public void simple() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("hello.jsp"));
+                .andExpect(view().name("index"));
     }
 }

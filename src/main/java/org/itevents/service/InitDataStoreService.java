@@ -1,24 +1,15 @@
 package org.itevents.service;
 
 import org.itevents.datastore.DataStore;
-import org.itevents.datastore.MapDataStore;
 import org.itevents.model.Event;
 import org.itevents.model.Location;
-import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.Date;
 
-@Service
 public class InitDataStoreService {
 
-    private final DataStore dataStore;
+    private DataStore dataStore;
 
-    public InitDataStoreService() {
-        this.dataStore = new MapDataStore();
-    }
-
-    @PostConstruct
     public void init() {
         Event first = new Event(
                 1, "IT-Forum for Juniors", new Location(50.4505F, 30.523F), new Date(1441123200000L));
@@ -35,7 +26,7 @@ public class InitDataStoreService {
         dataStore.addEvent(forth);
     }
 
-    public DataStore getDataStore() {
-        return dataStore;
+    public void setDataStore(DataStore dataStore) {
+        this.dataStore = dataStore;
     }
 }

@@ -2,22 +2,12 @@ package org.itevents.service;
 
 import org.itevents.datastore.DataStore;
 import org.itevents.model.Event;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public class EventServiceImpl implements EventService {
 
-    @Autowired
-    private InitDataStoreService initService;
-
     private DataStore dataStore;
-
-    public EventServiceImpl() {
-        this.dataStore = initService.getDataStore();
-    }
 
     @Override
     public void addEvent(Event event) {
@@ -37,5 +27,9 @@ public class EventServiceImpl implements EventService {
     @Override
     public Event removeEvent(Long id) {
         return dataStore.removeEvent(id);
+    }
+
+    public void setDataStore(DataStore dataStore) {
+        this.dataStore = dataStore;
     }
 }

@@ -3,7 +3,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'war'
-apply plugin: 'com.bmuschko.tomcat'
+apply plugin: 'jetty'
 
 
 sourceCompatibility = 1.7
@@ -13,16 +13,6 @@ repositories {
     mavenCentral()
 }
 
-buildscript {
-    repositories {
-        jcenter()
-    }
-
-    dependencies {
-        classpath 'com.bmuschko:gradle-tomcat-plugin:2.2.2'
-    }
-}
-
 dependencies {
     compile 'junit:junit:4.12'
     compile 'org.springframework:spring-core:4.1.6.RELEASE'
@@ -30,14 +20,8 @@ dependencies {
     compile 'org.springframework:spring-webmvc:4.1.6.RELEASE'
     compile 'org.springframework:spring-test:4.1.6.RELEASE'
     compile 'javax.servlet:javax.servlet-api:3.1.0'
-
-
-    def tomcatVersion = '7.0.59'
-    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
-            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
-            "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
-
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.6.0-rc2'
-
 }
 
+httpPort = 8080
+stopPort = 9080
+stopKey = "stop"

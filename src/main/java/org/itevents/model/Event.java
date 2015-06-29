@@ -1,12 +1,11 @@
 package org.itevents.model;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @XmlRootElement(name = "event")
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder={"id", "name", "location", "date"})
 public class Event implements Serializable {
 
